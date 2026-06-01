@@ -4,39 +4,39 @@
 
 export const FEATURES = [
   {
-    icon: '└─',
-    title: 'Subtasks & cascade completion',
+    icon: "└─",
+    title: "Subtasks & cascade completion",
     details:
-      'Break tasks into nested subtasks. Complete a parent and its children cascade — finish a checklist with one tap.',
+      "Break a task into nested subtasks. Tick off the parent and the children check off too, so a whole checklist closes in one tap.",
   },
   {
-    icon: '⏰',
-    title: 'Deadlines & smart reminders',
+    icon: "⏰",
+    title: "Deadlines & reminders",
     details:
-      'Set due dates with pre-reminders, quiet hours, and snooze. Kitsudo nudges you ahead of time and respects your sleep.',
+      "Add due dates with early reminders, quiet hours, and snooze. Kitsudo reminds you before things are due and stays quiet at night.",
   },
   {
-    icon: '↔',
-    title: 'Swipe to complete or delete',
+    icon: "↔",
+    title: "Swipe to complete or delete",
     details:
-      'Fast gestures right where your thumb is. Swipe one way to complete, the other to delete — with undo.',
+      "Swipe one way to complete a task, the other way to delete it. Both have undo if you slip.",
   },
   {
-    icon: '⇅',
-    title: 'Smart sorting & filters',
+    icon: "⇅",
+    title: "Sorting & filters",
     details:
-      'Sort by deadline, priority, or creation, and filter to exactly what matters now. Your list stays focused.',
+      "Sort by deadline, priority, or date added, and filter down to what you actually need to see.",
   },
   {
-    icon: '🎨',
-    title: 'Catppuccin & Material You',
+    icon: "🎨",
+    title: "Catppuccin & Material You",
     details:
-      'Five palettes and 14 accents, plus dynamic Material You color. Make Kitsudo look like yours.',
+      "Five palettes and 14 accent colors, plus dynamic Material You theming.",
   },
   {
-    icon: '🔒',
-    title: 'Local-first & private',
+    icon: "🔒",
+    title: "Local-first & private",
     details:
-      'Everything lives on your device. No account, no cloud, no tracking — your tasks are yours alone.',
+      "Everything stays on your device. No account, no cloud, no tracking.",
   },
-]
+];

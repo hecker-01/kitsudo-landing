@@ -1,4 +1,4 @@
-import { ref, watch, onUnmounted } from 'vue'
+import { ref, watch, onUnmounted } from "vue";
 
 /**
  * Char-by-char reveal of `text`.
@@ -11,48 +11,48 @@ import { ref, watch, onUnmounted } from 'vue'
  * @returns {{ output: import('vue').Ref<string>, isComplete: import('vue').Ref<boolean>, run: () => void }}
  */
 export function useTypewriter(text, opts = {}) {
-  const { delay = 45, startDelay = 0, start = true } = opts
-  const output = ref('')
-  const isComplete = ref(false)
+  const { delay = 45, startDelay = 0, start = true } = opts;
+  const output = ref("");
+  const isComplete = ref(false);
 
-  let timer = null
-  let kickoff = null
+  let timer = null;
+  let kickoff = null;
 
-  const source = () => (typeof text === 'string' ? text : text.value || '')
+  const source = () => (typeof text === "string" ? text : text.value || "");
 
   function clear() {
-    if (timer) clearTimeout(timer)
-    if (kickoff) clearTimeout(kickoff)
-    timer = null
-    kickoff = null
+    if (timer) clearTimeout(timer);
+    if (kickoff) clearTimeout(kickoff);
+    timer = null;
+    kickoff = null;
   }
 
   function run() {
-    clear()
-    output.value = ''
-    isComplete.value = false
-    const full = source()
+    clear();
+    output.value = "";
+    isComplete.value = false;
+    const full = source();
 
     const type = (i) => {
       if (i >= full.length) {
-        isComplete.value = true
-        return
+        isComplete.value = true;
+        return;
       }
-      output.value = full.slice(0, i + 1)
-      timer = setTimeout(() => type(i + 1), delay)
-    }
+      output.value = full.slice(0, i + 1);
+      timer = setTimeout(() => type(i + 1), delay);
+    };
 
-    kickoff = setTimeout(() => type(0), startDelay)
+    kickoff = setTimeout(() => type(0), startDelay);
   }
 
-  if (start) run()
+  if (start) run();
 
   // Re-run if a reactive source changes.
-  if (typeof text !== 'string') {
-    watch(text, () => start && run())
+  if (typeof text !== "string") {
+    watch(text, () => start && run());
   }
 
-  onUnmounted(clear)
+  onUnmounted(clear);
 
-  return { output, isComplete, run }
+  return { output, isComplete, run };
 }

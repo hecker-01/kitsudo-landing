@@ -1,4 +1,4 @@
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from "vue";
 
 /**
  * IntersectionObserver wrapper. Bind the returned `target` ref to an element;
@@ -10,31 +10,35 @@ import { ref, onMounted, onUnmounted } from 'vue'
  * @param {string}  [opts.rootMargin='0px 0px -10% 0px']
  */
 export function useInView(opts = {}) {
-  const { once = true, threshold = 0.2, rootMargin = '0px 0px -10% 0px' } = opts
-  const target = ref(null)
-  const isInView = ref(false)
-  let observer = null
+  const {
+    once = true,
+    threshold = 0.2,
+    rootMargin = "0px 0px -10% 0px",
+  } = opts;
+  const target = ref(null);
+  const isInView = ref(false);
+  let observer = null;
 
   onMounted(() => {
-    if (typeof IntersectionObserver === 'undefined') {
-      isInView.value = true // graceful fallback
-      return
+    if (typeof IntersectionObserver === "undefined") {
+      isInView.value = true; // graceful fallback
+      return;
     }
     observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          isInView.value = true
-          if (once && observer) observer.disconnect()
+          isInView.value = true;
+          if (once && observer) observer.disconnect();
         } else if (!once) {
-          isInView.value = false
+          isInView.value = false;
         }
       },
       { threshold, rootMargin },
-    )
-    if (target.value) observer.observe(target.value)
-  })
+    );
+    if (target.value) observer.observe(target.value);
+  });
 
-  onUnmounted(() => observer && observer.disconnect())
+  onUnmounted(() => observer && observer.disconnect());
 
-  return { target, isInView }
+  return { target, isInView };
 }
