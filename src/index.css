@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+@import 'tailwindcss';
+
+/* ── Catppuccin Mocha tokens (mirrors the app's default palette / Theme.kt) ── */
+@theme {
+  --color-primary: #cba6f7; /* Mauve  (accent / buttons / glow) */
+  --color-primary-hover: #b4befe; /* Lavender */
+  --color-secondary: #89b4fa; /* Blue */
+  --color-surface: #181825; /* Mantle */
+  --color-surface-elevated: #1e1e2e; /* Base (== app window_background) */
+  --color-surface-highest: #11111b; /* Crust */
+  --color-background: #11111b; /* Crust */
+  --color-on-surface: #cdd6f4; /* Text */
+  --color-on-surface-muted: #a6adc8; /* Subtext0 */
+  --color-outline: #313244; /* Surface0 */
+
+  /* accent swatches */
+  --color-rosewater: #f5e0dc;
+  --color-flamingo: #f2cdcd;
+  --color-pink: #f5c2e7;
+  --color-mauve: #cba6f7;
+  --color-red: #f38ba8;
+  --color-maroon: #eba0ac;
+  --color-peach: #fab387;
+  --color-yellow: #f9e2af;
+  --color-green: #a6e3a1;
+  --color-teal: #94e2d5;
+  --color-sky: #89dceb;
+  --color-sapphire: #74c7ec;
+  --color-blue: #89b4fa;
+  --color-lavender: #b4befe;
+
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-terminal: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+  --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-float: float 5s ease-in-out infinite;
+  --animate-cursor-pulse: cursor-pulse 1s step-end infinite;
+  --animate-glow-pulse: glow-pulse 4s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+@keyframes cursor-pulse {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes glow-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 18px rgba(203, 166, 247, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 36px rgba(203, 166, 247, 0.6));
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-on-surface font-mono antialiased;
+  }
+
+  ::selection {
+    background: rgba(203, 166, 247, 0.3);
+    color: #cdd6f4;
+  }
+
+  * {
+    scrollbar-color: #cba6f7 #181825;
+    scrollbar-width: thin;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #181825;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #313244;
+    border-radius: 6px;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: #cba6f7;
+  }
+}
+
+/* ── Terminal / scanline component utilities (recolored to mauve glow) ── */
+@layer components {
+  .container-tight {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .text-scanline {
+    text-shadow:
+      0 0 4px rgba(203, 166, 247, 0.6),
+      0 0 18px rgba(203, 166, 247, 0.35);
+  }
+
+  .terminal-box {
+    @apply rounded-lg border border-outline bg-surface-elevated/80;
+    box-shadow:
+      inset 0 0 0 1px rgba(203, 166, 247, 0.08),
+      0 0 0 1px rgba(203, 166, 247, 0.06),
+      0 18px 40px -24px rgba(0, 0, 0, 0.8);
+  }
+  .terminal-box:hover {
+    @apply border-primary/50;
+    box-shadow:
+      inset 0 0 0 1px rgba(203, 166, 247, 0.12),
+      0 0 28px -6px rgba(203, 166, 247, 0.3);
+  }
+
+  .term-dots::before {
+    content: '';
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 9999px;
+    background: #f38ba8;
+    box-shadow:
+      1.1rem 0 0 #f9e2af,
+      2.2rem 0 0 #a6e3a1;
+  }
+
+  .cmd-heading::before {
+    content: '$ ';
+    @apply text-primary;
+  }
+
+  .pixel-corners {
+    clip-path: polygon(
+      0 6px,
+      6px 6px,
+      6px 0,
+      calc(100% - 6px) 0,
+      calc(100% - 6px) 6px,
+      100% 6px,
+      100% calc(100% - 6px),
+      calc(100% - 6px) calc(100% - 6px),
+      calc(100% - 6px) 100%,
+      6px 100%,
+      6px calc(100% - 6px),
+      0 calc(100% - 6px)
+    );
+  }
+
+  .scanlines {
+    position: relative;
+  }
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.02) 0,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  }
+}
+
+/* ── Themed Swiper navigation + pagination ── */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #cba6f7 !important;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 1.5rem !important;
+  text-shadow: 0 0 12px rgba(203, 166, 247, 0.5);
+}
+.swiper-pagination-bullet {
+  background: #a6adc8 !important;
+}
+.swiper-pagination-bullet-active {
+  background: #cba6f7 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
