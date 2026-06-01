@@ -1,6 +1,7 @@
 <script setup>
 import SectionHeading from "./SectionHeading.vue";
 import SectionDecor from "./SectionDecor.vue";
+import { Check, CheckCheck, ArrowLeftRight } from "lucide-vue-next";
 </script>
 
 <template>
@@ -29,15 +30,27 @@ import SectionDecor from "./SectionDecor.vue";
                     </p>
                     <ul class="mt-6 space-y-2 text-sm">
                         <li class="flex gap-3">
-                            <span class="text-green">✓</span> View &amp;
+                            <Check
+                                class="mt-0.5 shrink-0 text-green"
+                                :size="16"
+                                :stroke-width="2.5"
+                            /> View &amp;
                             complete tasks on the watch
                         </li>
                         <li class="flex gap-3">
-                            <span class="text-green">✓</span> Phone ↔ watch
+                            <Check
+                                class="mt-0.5 shrink-0 text-green"
+                                :size="16"
+                                :stroke-width="2.5"
+                            /> Phone and watch
                             sync, no account needed
                         </li>
                         <li class="flex gap-3">
-                            <span class="text-green">✓</span> Reminders &amp;
+                            <Check
+                                class="mt-0.5 shrink-0 text-green"
+                                :size="16"
+                                :stroke-width="2.5"
+                            /> Reminders &amp;
                             snooze from your wrist
                         </li>
                     </ul>
@@ -49,7 +62,7 @@ import SectionDecor from "./SectionDecor.vue";
                         class="h-44 w-24 rounded-[1.4rem] border-4 border-outline bg-surface-highest p-1.5 sm:h-52 sm:w-28"
                     >
                         <div
-                            class="flex h-full w-full flex-col gap-1.5 rounded-[1rem] bg-surface-elevated p-2"
+                            class="flex h-full w-full flex-col gap-1.5 rounded-2xl bg-surface-elevated p-2"
                         >
                             <div class="h-2 w-2/3 rounded bg-primary/70"></div>
                             <div class="h-1.5 w-full rounded bg-outline"></div>
@@ -61,7 +74,10 @@ import SectionDecor from "./SectionDecor.vue";
                     </div>
 
                     <div class="flex flex-col items-center gap-1 text-primary">
-                        <span class="animate-cursor-pulse text-xl">⇄</span>
+                        <ArrowLeftRight
+                            class="animate-cursor-pulse"
+                            :size="22"
+                        />
                         <span class="text-[0.6rem] text-on-surface-muted"
                             >sync</span
                         >
@@ -76,7 +92,10 @@ import SectionDecor from "./SectionDecor.vue";
                             <div
                                 class="flex h-full w-full flex-col items-center justify-center gap-1 rounded-[1.1rem] bg-surface-elevated"
                             >
-                                <span class="text-green">☑</span>
+                                <CheckCheck
+                                    class="text-green"
+                                    :size="18"
+                                />
                                 <div
                                     class="h-1.5 w-2/3 rounded bg-primary/70"
                                 ></div>

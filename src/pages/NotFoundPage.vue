@@ -28,7 +28,7 @@ const route = useRoute();
 <span class="text-red">error:</span> 404: no such file or directory
 
 <span class="text-on-surface">The page you asked for doesn't exist.</span>
-The fox couldn't find it either. 🦊
+The fox couldn't find it either.
 </pre>
 
             <div class="mt-6 flex flex-wrap gap-4">

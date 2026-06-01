@@ -1,6 +1,6 @@
 # Kitsudo landing site
 
-Marketing landing page for **Kitsudo**, a local-first task/to-do planner for
+Marketing landing page for **Kitsudo**, a local task/to-do planner for
 Android (+ Wear OS companion). Open-source at
 [github.com/hecker-01/Kitsudo](https://github.com/hecker-01/Kitsudo), by
 [heckr.dev](https://heckr.dev).

@@ -24,7 +24,7 @@ import { APP_NAME, AUTHOR } from "../data/site.js";
             >
                 <p>
                     <span class="text-green">&gt;</span> {{ APP_NAME }} is
-                    <span class="text-primary">local-first</span>. Your tasks,
+                    <span class="text-primary">local</span>. Your tasks,
                     subtasks, deadlines, and settings live on your device. They
                     are not uploaded to any server we run.
                 </p>

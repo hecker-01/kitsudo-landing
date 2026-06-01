@@ -60,8 +60,8 @@ const CODE_LINES = [
     "> 2 due · 1 overdue · cascade: on",
     "$ task done #41 && task snooze #39 1h",
     "> ✓ completed · reminder rescheduled",
-    "$ sync --wear  // phone ↔ watch",
-    "> paired · local-first · no account",
+    "$ sync --wear  // phone <-> watch",
+    "> paired · local · no account",
 ];
 </script>
 
@@ -73,7 +73,7 @@ const CODE_LINES = [
         <!-- accent glow -->
         <div
             v-if="variant !== 'code'"
-            class="absolute h-[34rem] w-[34rem] rounded-full blur-3xl"
+            class="absolute h-136 w-136 rounded-full blur-3xl"
             :class="glowPos"
             :style="{ background: a('1f') }"
         />
@@ -102,10 +102,10 @@ const CODE_LINES = [
         <!-- blend edges into neighbouring sections -->
         <template v-if="fade">
             <div
-                class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-background to-transparent"
+                class="absolute inset-x-0 top-0 h-24 bg-linear-to-b from-background to-transparent"
             />
             <div
-                class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent"
+                class="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-background to-transparent"
             />
         </template>
     </div>

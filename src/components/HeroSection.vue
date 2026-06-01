@@ -1,7 +1,7 @@
 <script setup>
 import SectionDecor from "./SectionDecor.vue";
 import { useTypewriter } from "../composables/useTypewriter.js";
-import { TAGLINE, RELEASES_URL } from "../data/site.js";
+import { TAGLINE, REPO_URL } from "../data/site.js";
 
 const { output: title, isComplete } = useTypewriter("KITSUDO", {
     delay: 110,
@@ -20,13 +20,7 @@ function scrollTo(id) {
     >
         <SectionDecor variant="rings" accent="#cba6f7" glow="c" :fade="false" />
         <div class="container-tight grid items-center gap-12 md:grid-cols-2">
-            <!-- copy -->
             <div class="animate-fade-in">
-                <p class="mb-4 text-sm text-on-surface-muted">
-                    <span class="text-primary">~/heckr.dev</span> $ ./kitsudo
-                    --start
-                </p>
-
                 <h1
                     class="font-mono text-5xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl"
                 >
@@ -46,19 +40,21 @@ function scrollTo(id) {
                 </p>
 
                 <div class="mt-8 flex flex-wrap gap-4">
-                    <button
+                    <a
                         class="group rounded-md border border-primary bg-primary/10 px-6 py-3 font-semibold text-primary transition hover:bg-primary hover:text-background hover:shadow-[0_0_28px_-4px_rgba(203,166,247,0.7)]"
-                        @click="scrollTo('download')"
+                        href="https://github.com/hecker-01/Kitsudo/releases/latest"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         [ Download APK ]
-                    </button>
+                    </a>
                     <a
-                        :href="RELEASES_URL"
+                        :href="REPO_URL"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="rounded-md border border-outline px-6 py-3 font-semibold text-on-surface transition hover:border-secondary hover:text-secondary"
                     >
-                        [ View releases ]
+                        [ View Source Code ]
                     </a>
                 </div>
             </div>

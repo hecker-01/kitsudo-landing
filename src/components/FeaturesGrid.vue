@@ -19,15 +19,19 @@ const pad = (n) => String(n + 1).padStart(2, "0");
                 <article
                     v-for="(f, i) in FEATURES"
                     :key="f.title"
-                    class="terminal-box group flex flex-col p-5 transition-transform duration-200 hover:-translate-y-1"
+                    class="terminal-box group flex flex-col p-5 transition-transform duration-200"
                 >
                     <div class="mb-3 flex items-center justify-between">
                         <span class="text-xs text-on-surface-muted"
                             >[{{ pad(i) }}]</span
                         >
-                        <span class="text-2xl" aria-hidden="true">{{
-                            f.icon
-                        }}</span>
+                        <component
+                            :is="f.icon"
+                            :size="22"
+                            :stroke-width="1.75"
+                            class="text-primary"
+                            aria-hidden="true"
+                        />
                     </div>
                     <h3
                         class="font-mono text-lg font-bold text-primary transition group-hover:text-scanline"

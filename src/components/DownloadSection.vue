@@ -1,6 +1,7 @@
 <script setup>
 import SectionHeading from "./SectionHeading.vue";
 import SectionDecor from "./SectionDecor.vue";
+import { Play } from "lucide-vue-next";
 import { RELEASES_URL, REPO_URL, PLAY_URL } from "../data/site.js";
 </script>
 
@@ -27,7 +28,7 @@ import { RELEASES_URL, REPO_URL, PLAY_URL } from "../data/site.js";
 
                 <div class="flex flex-wrap items-center justify-center gap-4">
                     <a
-                        :href="RELEASES_URL"
+                        href="https://github.com/hecker-01/Kitsudo/releases/latest"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="rounded-md border border-primary bg-primary/10 px-7 py-3.5 font-semibold text-primary transition hover:bg-primary hover:text-background hover:shadow-[0_0_28px_-4px_rgba(203,166,247,0.7)]"
@@ -43,7 +44,7 @@ import { RELEASES_URL, REPO_URL, PLAY_URL } from "../data/site.js";
                         rel="noopener noreferrer"
                         class="inline-flex items-center gap-3 rounded-md border border-outline bg-surface px-5 py-3 transition hover:border-secondary"
                     >
-                        <span class="text-2xl">▶</span>
+                        <Play :size="22" class="fill-current" />
                         <span class="text-left leading-tight">
                             <span
                                 class="block text-[0.6rem] uppercase tracking-wider text-on-surface-muted"

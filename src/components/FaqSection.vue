@@ -19,11 +19,11 @@ const FAQS = [
     },
     {
         q: "Does Kitsudo track me?",
-        a: "No. Kitsudo is local-first, so your tasks stay on your device. There is no account, no cloud sync, and no analytics or tracking.",
+        a: "No. Kitsudo is local, so your tasks stay on your device. There is no account, no cloud sync, and no analytics or tracking.",
     },
     {
         q: "Does it need an internet connection?",
-        a: "No. Everything works fully offline. Phone ↔ Wear OS sync happens directly between your devices.",
+        a: "No. Everything works fully offline. Phone and Wear OS sync happens directly between your devices.",
     },
 ];
 

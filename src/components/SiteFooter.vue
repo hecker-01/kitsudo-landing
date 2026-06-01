@@ -31,8 +31,8 @@ const year = new Date().getFullYear();
                 <p
                     class="mt-4 max-w-xs text-sm leading-relaxed text-on-surface-muted"
                 >
-                    A local-first task planner for Android, with a Wear OS
-                    companion. Open-source and private by design.
+                    A local task planner for Android, with a Wear OS companion.
+                    Open-source and private by design.
                 </p>
             </div>
 
@@ -116,8 +116,8 @@ const year = new Date().getFullYear();
             >
                 <span>© {{ year }} {{ APP_NAME }}, by {{ AUTHOR }}.</span>
                 <span class="font-mono"
-                    >// built local-first
-                    <span class="text-primary">▋</span></span
+                    >// built to be open-source and private by design.
+                    <span class="text-primary"> ▋</span></span
                 >
             </div>
         </div>
