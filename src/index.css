@@ -88,6 +88,18 @@
         @apply bg-background text-on-surface font-mono antialiased;
     }
 
+    /* Browsers/Tailwind preflight default buttons to the arrow cursor; make
+       anything actionable show a pointer. */
+    button:not(:disabled),
+    [role="button"]:not(:disabled),
+    summary,
+    label[for] {
+        cursor: pointer;
+    }
+    button:disabled {
+        cursor: not-allowed;
+    }
+
     ::selection {
         background: rgba(203, 166, 247, 0.3);
         color: #cdd6f4;
@@ -195,6 +207,10 @@
 .swiper-button-next,
 .swiper-button-prev {
     color: #cba6f7 !important;
+    cursor: pointer;
+}
+.swiper-pagination-bullet {
+    cursor: pointer;
 }
 .swiper-button-next::after,
 .swiper-button-prev::after {

@@ -52,25 +52,31 @@ const toggle = (i) => (open.value = open.value === i ? -1 : i);
                             <span class="text-primary">?</span> {{ f.q }}
                         </span>
                         <span
-                            class="text-primary transition-transform"
+                            class="text-primary transition-transform duration-300"
                             :class="open === i ? 'rotate-45' : ''"
                             >+</span
                         >
                     </button>
-                    <div v-show="open === i" class="px-5 pb-5">
-                        <p
-                            class="text-sm leading-relaxed text-on-surface-muted"
-                        >
-                            <span class="text-green">&gt;</span> {{ f.a }}
-                            <a
-                                v-if="f.q.startsWith('How')"
-                                :href="RELEASES_URL"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="text-primary underline-offset-4 hover:underline"
-                                >Get the APK →</a
+                    <div
+                        class="grid transition-[grid-template-rows] duration-300 ease-out"
+                        :class="open === i ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'"
+                    >
+                        <div class="overflow-hidden">
+                            <p
+                                class="px-5 pb-5 text-sm leading-relaxed text-on-surface-muted transition-opacity duration-300"
+                                :class="open === i ? 'opacity-100' : 'opacity-0'"
                             >
-                        </p>
+                                <span class="text-green">&gt;</span> {{ f.a }}
+                                <a
+                                    v-if="f.q.startsWith('How')"
+                                    :href="RELEASES_URL"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-primary underline-offset-4 hover:underline"
+                                    >Get the APK →</a
+                                >
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

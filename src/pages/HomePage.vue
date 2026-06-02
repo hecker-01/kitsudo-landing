@@ -1,4 +1,5 @@
 <script setup>
+import SiteHeader from "../components/SiteHeader.vue";
 import HeroSection from "../components/HeroSection.vue";
 import FeaturesGrid from "../components/FeaturesGrid.vue";
 import ThemeShowcase from "../components/ThemeShowcase.vue";
@@ -10,6 +11,8 @@ import SiteFooter from "../components/SiteFooter.vue";
 </script>
 
 <template>
+    <SiteHeader />
+
     <main>
         <HeroSection />
         <FeaturesGrid />
