@@ -32,7 +32,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
     <header
         class="fixed inset-x-0 top-0 z-50 transition-colors duration-300"
         :class="
-            scrolled
+            scrolled || menuOpen
                 ? 'border-b border-outline bg-background/80 backdrop-blur-md'
                 : 'border-b border-transparent'
         "
@@ -98,7 +98,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
         >
             <div
                 v-show="menuOpen"
-                class="border-b border-outline bg-background/95 backdrop-blur-md md:hidden"
+                class="border-b border-outline md:hidden"
             >
                 <ul class="container-tight flex flex-col py-3">
                     <li v-for="item in NAV" :key="item.id">

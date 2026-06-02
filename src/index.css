@@ -86,6 +86,9 @@
 
     body {
         @apply bg-background text-on-surface font-mono antialiased;
+        /* Guard against stray full-bleed elements scrolling the page sideways
+           on narrow screens. The fixed header is unaffected. */
+        overflow-x: hidden;
     }
 
     /* Browsers/Tailwind preflight default buttons to the arrow cursor; make

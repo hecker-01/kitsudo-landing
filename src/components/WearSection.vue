@@ -57,9 +57,9 @@ import { Check, CheckCheck, ArrowLeftRight } from "lucide-vue-next";
                 </div>
 
                 <!-- phone + watch glyph -->
-                <div class="flex items-center justify-center gap-6">
+                <div class="flex items-center justify-center gap-3 sm:gap-6">
                     <div
-                        class="h-44 w-24 rounded-[1.4rem] border-4 border-outline bg-surface-highest p-1.5 sm:h-52 sm:w-28"
+                        class="h-40 w-20 rounded-[1.4rem] border-4 border-outline bg-surface-highest p-1.5 sm:h-52 sm:w-28"
                     >
                         <div
                             class="flex h-full w-full flex-col gap-1.5 rounded-2xl bg-surface-elevated p-2"
@@ -84,7 +84,7 @@ import { Check, CheckCheck, ArrowLeftRight } from "lucide-vue-next";
                     </div>
 
                     <div
-                        class="relative h-24 w-24 animate-float sm:h-28 sm:w-28"
+                        class="relative h-20 w-20 animate-float sm:h-28 sm:w-28"
                     >
                         <div
                             class="absolute inset-0 rounded-[1.6rem] border-4 border-outline bg-surface-highest p-1.5"

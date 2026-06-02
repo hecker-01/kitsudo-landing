@@ -102,7 +102,7 @@ const year = new Date().getFullYear();
                             :href="AUTHOR_URL"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="hover:text-primary"
+                            class="hovertext-primary"
                             >→ heckr.dev</a
                         >
                     </li>
@@ -112,9 +112,18 @@ const year = new Date().getFullYear();
 
         <div class="border-t border-outline">
             <div
-                class="container-tight flex flex-col items-center justify-between gap-2 py-5 text-xs text-on-surface-muted sm:flex-row"
+                class="container-tight flex flex-col items-center justify-between gap-2 py-5 text-center text-xs text-on-surface-muted sm:flex-row sm:text-left"
             >
-                <span>© {{ year }} {{ APP_NAME }}, by {{ AUTHOR }}.</span>
+                <span
+                    >© {{ year }} {{ APP_NAME }}, by
+                    <a
+                        :href="AUTHOR_URL"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-primary hover:underline"
+                        >{{ AUTHOR }}</a
+                    >.</span
+                >
                 <span class="font-mono"
                     >// built to be open-source and private by design.
                     <span class="text-primary"> ▋</span></span
