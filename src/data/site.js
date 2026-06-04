@@ -13,11 +13,18 @@ export const TAGLINE =
   "A local task planner for Android. Subtasks, deadlines, and your own themes, on your phone and watch.";
 
 // Screenshot manifest. Add filenames here to match files in public/screenshots/.
-// Empty -> the carousel shows placeholder frames.
+// Empty -> the carousel shows placeholder frames. These render in a phone frame.
 export const SCREENSHOTS = [
-  // '1.png',
-  // '2.png',
-  // '3.png',
+  "home.jpg",
+  "subtask.jpg",
+  "deadline.jpg",
+  "themes.jpg",
+];
+
+// Wear OS shots render in a round watch frame instead (square ~432x432 looks best).
+export const WEAR_SHOTS = [
+  "wear.png",
+  "wear_subtasks.png",
 ];
 
 // Boot-log lines shown by the LoadingScreen on the home page.

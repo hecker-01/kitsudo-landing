@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination } from "swiper/modules";
 import SectionHeading from "./SectionHeading.vue";
 import SectionDecor from "./SectionDecor.vue";
-import { SCREENSHOTS } from "../data/site.js";
+import { SCREENSHOTS, WEAR_SHOTS } from "../data/site.js";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -13,19 +13,28 @@ import "swiper/css/pagination";
 const modules = [Navigation, Pagination];
 
 // Real screenshots if provided, otherwise placeholder frames.
-const hasShots = computed(() => SCREENSHOTS.length > 0);
+// Phone shots get a phone frame; Wear OS shots get a round watch frame.
+const hasShots = computed(() => SCREENSHOTS.length + WEAR_SHOTS.length > 0);
 const slides = computed(() =>
     hasShots.value
-        ? SCREENSHOTS.map((file) => ({
-              src: `/screenshots/${file}`,
-              label: "",
-          }))
+        ? [
+              ...SCREENSHOTS.map((file) => ({
+                  src: `/screenshots/${file}`,
+                  label: "",
+                  kind: "phone",
+              })),
+              ...WEAR_SHOTS.map((file) => ({
+                  src: `/screenshots/${file}`,
+                  label: "",
+                  kind: "watch",
+              })),
+          ]
         : [
-              { src: "", label: "Today" },
-              { src: "", label: "Subtasks" },
-              { src: "", label: "Deadlines" },
-              { src: "", label: "Themes" },
-              { src: "", label: "Wear OS" },
+              { src: "", label: "Today", kind: "phone" },
+              { src: "", label: "Subtasks", kind: "phone" },
+              { src: "", label: "Deadlines", kind: "phone" },
+              { src: "", label: "Themes", kind: "phone" },
+              { src: "", label: "Wear OS", kind: "watch" },
           ],
 );
 </script>
@@ -56,32 +65,71 @@ const slides = computed(() =>
             <SwiperSlide
                 v-for="(s, i) in slides"
                 :key="i"
-                class="!w-[220px] sm:!w-[250px]"
+                class="!w-[270px] sm:!w-[310px]"
             >
-                <!-- phone frame -->
+                <!-- watch frame (Wear OS) -->
                 <div
-                    class="mx-auto w-full rounded-[2rem] border-4 border-outline bg-surface-highest p-2 shadow-2xl"
+                    v-if="s.kind === 'watch'"
+                    class="flex h-full items-center justify-center"
                 >
                     <div
-                        class="relative overflow-hidden rounded-[1.5rem] bg-surface-elevated"
-                        style="aspect-ratio: 9 / 19.5"
+                        class="relative aspect-square w-[210px] rounded-full border-4 border-outline bg-surface-highest p-2 shadow-2xl sm:w-[235px]"
                     >
-                        <!-- notch -->
+                        <!-- crown -->
                         <div
-                            class="absolute left-1/2 top-2 z-10 h-1.5 w-16 -translate-x-1/2 rounded-full bg-background/80"
+                            class="absolute -right-1.5 top-1/2 h-9 w-1.5 -translate-y-1/2 rounded-full bg-outline"
                         ></div>
 
+                        <div
+                            class="relative h-full w-full overflow-hidden rounded-full bg-surface-elevated"
+                        >
+                            <img
+                                v-if="s.src"
+                                :src="s.src"
+                                :alt="`Kitsudo Wear OS screenshot ${i + 1}`"
+                                class="h-full w-full object-cover"
+                                loading="lazy"
+                            />
+                            <!-- placeholder -->
+                            <div
+                                v-else
+                                class="flex h-full w-full flex-col items-center justify-center gap-2 p-4 text-center"
+                            >
+                                <img
+                                    src="/logo.svg"
+                                    alt=""
+                                    class="h-10 w-10 object-contain opacity-60"
+                                />
+                                <span
+                                    class="text-sm font-bold text-primary"
+                                    >{{ s.label }}</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- phone frame -->
+                <div
+                    v-else
+                    class="mx-auto w-full rounded-[2.2rem] border-[3px] border-outline bg-background p-[3px] shadow-2xl ring-1 ring-white/5"
+                >
+                    <div
+                        class="relative overflow-hidden rounded-[1.95rem] bg-surface-elevated"
+                    >
+                        <!-- screenshot at native aspect ratio: no cropping -->
                         <img
                             v-if="s.src"
                             :src="s.src"
                             :alt="`Kitsudo screenshot ${i + 1}`"
-                            class="h-full w-full object-cover"
+                            class="block h-auto w-full"
                             loading="lazy"
                         />
                         <!-- placeholder -->
                         <div
                             v-else
-                            class="flex h-full w-full flex-col items-center justify-center gap-3 p-4 text-center"
+                            class="flex w-full flex-col items-center justify-center gap-3 p-4 text-center"
+                            style="aspect-ratio: 9 / 19.5"
                         >
                             <img
                                 src="/logo.svg"

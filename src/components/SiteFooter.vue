@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from "vue-router";
+import { Copyright } from "lucide-vue-next";
 import {
     REPO_URL,
     RELEASES_URL,
@@ -102,7 +103,7 @@ const year = new Date().getFullYear();
                             :href="AUTHOR_URL"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="hovertext-primary"
+                            class="hover:text-primary"
                             >→ heckr.dev</a
                         >
                     </li>
@@ -114,16 +115,19 @@ const year = new Date().getFullYear();
             <div
                 class="container-tight flex flex-col items-center justify-between gap-2 py-5 text-center text-xs text-on-surface-muted sm:flex-row sm:text-left"
             >
-                <span
-                    >© {{ year }} {{ APP_NAME }}, by
-                    <a
-                        :href="AUTHOR_URL"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-primary hover:underline"
-                        >{{ AUTHOR }}</a
-                    >.</span
-                >
+                <span class="inline-flex items-center gap-1.5">
+                    <Copyright :size="12" :stroke-width="2" />
+                    <span
+                        >{{ year }} {{ APP_NAME }}, by
+                        <a
+                            :href="AUTHOR_URL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-primary hover:underline"
+                            >{{ AUTHOR }}</a
+                        >.</span
+                    >
+                </span>
                 <span class="font-mono"
                     >// built to be open-source and private by design.
                     <span class="text-primary"> ▋</span></span

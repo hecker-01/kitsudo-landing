@@ -58,7 +58,7 @@ import { RELEASES_URL, REPO_URL, PLAY_URL } from "../data/site.js";
                         :href="REPO_URL"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="rounded-md border border-outline px-7 py-3.5 font-semibold text-on-surface transition hover:border-secondary hover:text-secondary"
+                        class="rounded-md border border-outline px-7 py-3.5 font-semibold text-on-surface transition hover:border-primary hover:text-primary"
                     >
                         [ View source ]
                     </a>

@@ -147,7 +147,11 @@
             0 0 0 1px rgba(203, 166, 247, 0.06),
             0 18px 40px -24px rgba(0, 0, 0, 0.8);
     }
-    .terminal-box:hover {
+    /* Opt-in hover glow for boxes that are actually clickable. */
+    .terminal-box.is-interactive {
+        @apply transition;
+    }
+    .terminal-box.is-interactive:hover {
         @apply border-primary/50;
         box-shadow:
             inset 0 0 0 1px rgba(203, 166, 247, 0.12),

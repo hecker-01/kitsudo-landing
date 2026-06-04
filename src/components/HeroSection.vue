@@ -15,7 +15,7 @@ function scrollTo(id) {
 
 <template>
     <section
-        class="relative isolate flex min-h-[92vh] items-center pt-24"
+        class="relative isolate flex min-h-[92vh] items-center pt-24 pb-28 md:pb-0"
         id="top"
     >
         <SectionDecor variant="rings" accent="#cba6f7" glow="c" :fade="false" />
@@ -61,21 +61,11 @@ function scrollTo(id) {
 
             <!-- fox -->
             <div class="flex justify-center md:justify-end">
-                <div class="relative">
-                    <div
-                        class="absolute inset-0 -z-10 rounded-full bg-primary/20 blur-3xl"
-                    ></div>
-                    <img
-                        src="/logo.svg"
-                        alt="Kitsudo fox mascot"
-                        class="h-56 w-56 animate-float object-contain sm:h-72 sm:w-72 lg:h-80 lg:w-80"
-                        style="
-                            filter: drop-shadow(
-                                0 0 28px rgba(203, 166, 247, 0.45)
-                            );
-                        "
-                    />
-                </div>
+                <img
+                    src="/logo.svg"
+                    alt="Kitsudo fox mascot"
+                    class="h-48 w-48 object-contain sm:h-72 sm:w-72 lg:h-80 lg:w-80"
+                />
             </div>
         </div>
 

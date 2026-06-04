@@ -11,7 +11,7 @@ const FAQS = [
     },
     {
         q: "Is it open source?",
-        a: "Yes. The full source is on GitHub at hecker-01/Kitsudo, by heckr.dev.",
+        a: "Yes. The full source is on GitHub at hecker-01/Kitsudo.",
     },
     {
         q: "How do I install it?",
@@ -41,7 +41,7 @@ const toggle = (i) => (open.value = open.value === i ? -1 : i);
                 <div
                     v-for="(f, i) in FAQS"
                     :key="f.q"
-                    class="terminal-box overflow-hidden"
+                    class="terminal-box is-interactive overflow-hidden"
                 >
                     <button
                         class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
@@ -59,12 +59,16 @@ const toggle = (i) => (open.value = open.value === i ? -1 : i);
                     </button>
                     <div
                         class="grid transition-[grid-template-rows] duration-300 ease-out"
-                        :class="open === i ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'"
+                        :class="
+                            open === i ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                        "
                     >
                         <div class="overflow-hidden">
                             <p
                                 class="px-5 pb-5 text-sm leading-relaxed text-on-surface-muted transition-opacity duration-300"
-                                :class="open === i ? 'opacity-100' : 'opacity-0'"
+                                :class="
+                                    open === i ? 'opacity-100' : 'opacity-0'
+                                "
                             >
                                 <span class="text-green">&gt;</span> {{ f.a }}
                                 <a

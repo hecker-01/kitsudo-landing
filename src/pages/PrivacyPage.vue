@@ -2,6 +2,7 @@
 import { RouterLink } from "vue-router";
 import SectionDecor from "../components/SectionDecor.vue";
 import SiteFooter from "../components/SiteFooter.vue";
+import { Copyright } from "lucide-vue-next";
 import { APP_NAME, AUTHOR } from "../data/site.js";
 </script>
 
@@ -84,7 +85,10 @@ import { APP_NAME, AUTHOR } from "../data/site.js";
 
                 <p class="border-t border-outline pt-5 text-xs">
                     This page describes the app's design intent and is not a
-                    substitute for legal advice. © {{ AUTHOR }}.
+                    substitute for legal advice.
+                    <span class="inline-flex items-center gap-1 align-middle">
+                        <Copyright :size="12" :stroke-width="2" />{{ AUTHOR }}.
+                    </span>
                 </p>
             </div>
         </div>

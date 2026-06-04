@@ -18,7 +18,7 @@ import { Check, CheckCheck, ArrowLeftRight } from "lucide-vue-next";
             >
                 <div>
                     <h3
-                        class="font-mono text-2xl font-bold text-primary text-scanline"
+                        class="font-mono text-2xl font-bold text-primary"
                     >
                         Wear OS companion
                     </h3>
@@ -74,17 +74,14 @@ import { Check, CheckCheck, ArrowLeftRight } from "lucide-vue-next";
                     </div>
 
                     <div class="flex flex-col items-center gap-1 text-primary">
-                        <ArrowLeftRight
-                            class="animate-cursor-pulse"
-                            :size="22"
-                        />
+                        <ArrowLeftRight :size="22" />
                         <span class="text-[0.6rem] text-on-surface-muted"
                             >sync</span
                         >
                     </div>
 
                     <div
-                        class="relative h-20 w-20 animate-float sm:h-28 sm:w-28"
+                        class="relative h-20 w-20 sm:h-28 sm:w-28"
                     >
                         <div
                             class="absolute inset-0 rounded-[1.6rem] border-4 border-outline bg-surface-highest p-1.5"
