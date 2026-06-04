@@ -17,14 +17,96 @@ import { RELEASES_URL, REPO_URL, PLAY_URL } from "../data/site.js";
             <div
                 class="terminal-box flex flex-col items-center gap-6 p-8 text-center sm:p-12"
             >
-                <img
-                    src="/logo.svg"
-                    alt=""
-                    class="h-20 w-20 object-contain"
-                    style="
-                        filter: drop-shadow(0 0 20px rgba(203, 166, 247, 0.45));
-                    "
-                />
+                <!-- app icon: fox on a One UI-style squircle -->
+                <div
+                    class="relative h-24 w-24 drop-shadow-[0_8px_6px_rgba(0,0,0,0.35)]"
+                >
+                    <svg
+                        viewBox="0 0 100 100"
+                        class="absolute inset-0 h-full w-full"
+                        aria-hidden="true"
+                    >
+                        <defs>
+                            <filter
+                                id="iconBevel"
+                                x="-20%"
+                                y="-20%"
+                                width="140%"
+                                height="140%"
+                            >
+                                <!-- white inner highlight along the top edge -->
+                                <feOffset
+                                    in="SourceAlpha"
+                                    dx="0"
+                                    dy="1.5"
+                                    result="downA"
+                                />
+                                <feGaussianBlur
+                                    in="downA"
+                                    stdDeviation="0.8"
+                                    result="downB"
+                                />
+                                <feComposite
+                                    in="SourceAlpha"
+                                    in2="downB"
+                                    operator="out"
+                                    result="topEdge"
+                                />
+                                <feFlood
+                                    flood-color="#ffffff"
+                                    flood-opacity="0.2"
+                                />
+                                <feComposite
+                                    in2="topEdge"
+                                    operator="in"
+                                    result="topShine"
+                                />
+                                <!-- dark inner shadow along the bottom edge -->
+                                <feOffset
+                                    in="SourceAlpha"
+                                    dx="0"
+                                    dy="-1.5"
+                                    result="upA"
+                                />
+                                <feGaussianBlur
+                                    in="upA"
+                                    stdDeviation="1.2"
+                                    result="upB"
+                                />
+                                <feComposite
+                                    in="SourceAlpha"
+                                    in2="upB"
+                                    operator="out"
+                                    result="bottomEdge"
+                                />
+                                <feFlood
+                                    flood-color="#000000"
+                                    flood-opacity="0.35"
+                                />
+                                <feComposite
+                                    in2="bottomEdge"
+                                    operator="in"
+                                    result="bottomShade"
+                                />
+                                <feMerge>
+                                    <feMergeNode in="SourceGraphic" />
+                                    <feMergeNode in="topShine" />
+                                    <feMergeNode in="bottomShade" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <path
+                            d="M50,0 C13,0 0,13 0,50 C0,87 13,100 50,100 C87,100 100,87 100,50 C100,13 87,0 50,0 Z"
+                            fill="#24284b"
+                            filter="url(#iconBevel)"
+                        />
+                    </svg>
+                    <img
+                        src="/logo.svg"
+                        alt=""
+                        class="absolute inset-[8%] h-auto w-auto object-contain"
+                    />
+                </div>
 
                 <div class="flex flex-wrap items-center justify-center gap-4">
                     <a
