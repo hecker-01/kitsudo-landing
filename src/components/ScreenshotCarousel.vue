@@ -60,12 +60,12 @@ const slides = computed(() =>
             :space-between="24"
             :navigation="true"
             :pagination="{ clickable: true }"
-            class="screenshot-swiper !px-4 !pb-14"
+            class="screenshot-swiper px-4! pb-14!"
         >
             <SwiperSlide
                 v-for="(s, i) in slides"
                 :key="i"
-                class="!w-[270px] sm:!w-[310px]"
+                class="w-67.5! sm:w-77.5!"
             >
                 <!-- watch frame (Wear OS) -->
                 <div
@@ -73,7 +73,7 @@ const slides = computed(() =>
                     class="flex h-full items-center justify-center"
                 >
                     <div
-                        class="relative aspect-square w-[210px] rounded-full border-4 border-outline bg-surface-highest p-2 shadow-2xl sm:w-[235px]"
+                        class="relative aspect-square w-52.5 rounded-full border-4 border-outline bg-surface-highest p-2 shadow-2xl sm:w-58.75"
                     >
                         <!-- crown -->
                         <div
@@ -100,10 +100,9 @@ const slides = computed(() =>
                                     alt=""
                                     class="h-10 w-10 object-contain opacity-60"
                                 />
-                                <span
-                                    class="text-sm font-bold text-primary"
-                                    >{{ s.label }}</span
-                                >
+                                <span class="text-sm font-bold text-primary">{{
+                                    s.label
+                                }}</span>
                             </div>
                         </div>
                     </div>
@@ -112,7 +111,7 @@ const slides = computed(() =>
                 <!-- phone frame -->
                 <div
                     v-else
-                    class="mx-auto w-full rounded-[2.2rem] border-[3px] border-outline bg-background p-[3px] shadow-2xl ring-1 ring-white/5"
+                    class="mx-auto w-full rounded-[2.2rem] border-[3px] border-outline bg-background p-0.75 shadow-2xl ring-1 ring-white/5"
                 >
                     <div
                         class="relative overflow-hidden rounded-[1.95rem] bg-surface-elevated"

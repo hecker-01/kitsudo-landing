@@ -5,7 +5,12 @@ export const RELEASES_URL = "https://github.com/hecker-01/Kitsudo/releases";
 export const AUTHOR_URL = "https://heckr.dev";
 
 // Leave empty until there's a Play Store listing. The badge stays hidden while this is empty.
-export const PLAY_URL = "";
+export const PLAY_URL =
+  "https://play.google.com/store/apps/details?id=dev.heckr.kitsudo";
+
+// Currently in closed testing — flip to true when the Play Store listing goes public.
+// While false, the Play Store badge/link is disabled and shows "Coming soon" on click.
+export const PLAY_AVAILABLE = false;
 
 export const AUTHOR = "heckr.dev";
 export const APP_NAME = "Kitsudo";

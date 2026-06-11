@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from "vue";
 import { RouterLink } from "vue-router";
 import { Copyright } from "lucide-vue-next";
 import {
@@ -7,9 +8,19 @@ import {
     AUTHOR_URL,
     AUTHOR,
     APP_NAME,
+    PLAY_URL,
+    PLAY_AVAILABLE,
 } from "../data/site.js";
 
 const year = new Date().getFullYear();
+// Closed testing: the Play link is disabled and flashes "coming soon" on click.
+const playSoon = ref(false);
+function flashPlaySoon() {
+    playSoon.value = true;
+    setTimeout(() => {
+        playSoon.value = false;
+    }, 2000);
+}
 </script>
 
 <template>
@@ -44,7 +55,27 @@ const year = new Date().getFullYear();
                 >
                     links
                 </h4>
-                <ul class="space-y-2 text-sm text-on-surface-muted">
+                <ul
+                    class="grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-on-surface-muted"
+                >
+                    <li>
+                        <a
+                            v-if="PLAY_AVAILABLE"
+                            :href="PLAY_URL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="hover:text-primary"
+                            >→ Google Play</a
+                        >
+                        <button
+                            v-else
+                            type="button"
+                            :aria-disabled="true"
+                            @click="flashPlaySoon"
+                            class="cursor-not-allowed text-left"
+                            >→ {{ playSoon ? "Coming soon" : "Google Play" }}</button
+                        >
+                    </li>
                     <li>
                         <a
                             :href="REPO_URL"

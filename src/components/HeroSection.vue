@@ -40,21 +40,20 @@ function scrollTo(id) {
                 </p>
 
                 <div class="mt-8 flex flex-wrap gap-4">
-                    <a
+                    <button
+                        type="button"
                         class="group rounded-md border border-primary bg-primary/10 px-6 py-3 font-semibold text-primary transition hover:bg-primary hover:text-background hover:shadow-[0_0_28px_-4px_rgba(203,166,247,0.7)]"
-                        href="https://github.com/hecker-01/Kitsudo/releases/latest"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        @click="scrollTo('download')"
                     >
-                        [ Download APK ]
-                    </a>
+                        [ Download Kitsudo ]
+                    </button>
                     <a
                         :href="REPO_URL"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="rounded-md border border-outline px-6 py-3 font-semibold text-on-surface transition hover:border-secondary hover:text-secondary"
+                        class="rounded-md border border-outline px-6 py-3 font-semibold text-on-surface transition hover:border-primary hover:text-primary"
                     >
-                        [ View Source Code ]
+                        [ Build from source ]
                     </a>
                 </div>
             </div>

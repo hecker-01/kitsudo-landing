@@ -1,8 +1,18 @@
 <script setup>
+import { ref } from "vue";
 import SectionHeading from "./SectionHeading.vue";
 import SectionDecor from "./SectionDecor.vue";
-import { Play } from "lucide-vue-next";
-import { RELEASES_URL, REPO_URL, PLAY_URL } from "../data/site.js";
+import { RELEASES_URL, REPO_URL, PLAY_URL, PLAY_AVAILABLE } from "../data/site.js";
+
+// While the app is in closed testing, the Play badge is disabled and flashes
+// a "coming soon" note on click for a few seconds instead of navigating.
+const showSoon = ref(false);
+function flashSoon() {
+    showSoon.value = true;
+    setTimeout(() => {
+        showSoon.value = false;
+    }, 2000);
+}
 </script>
 
 <template>
@@ -109,31 +119,66 @@ import { RELEASES_URL, REPO_URL, PLAY_URL } from "../data/site.js";
                 </div>
 
                 <div class="flex flex-wrap items-center justify-center gap-4">
+                    <!-- Play Store badge: live link once available, otherwise a
+                         disabled button that reveals "coming soon" on click. -->
                     <a
-                        href="https://github.com/hecker-01/Kitsudo/releases/latest"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="rounded-md border border-primary bg-primary/10 px-7 py-3.5 font-semibold text-primary transition hover:bg-primary hover:text-background hover:shadow-[0_0_28px_-4px_rgba(203,166,247,0.7)]"
-                    >
-                        [ Download APK ]
-                    </a>
-
-                    <!-- Play Store badge: only shown once a listing URL is set. -->
-                    <a
-                        v-if="PLAY_URL"
+                        v-if="PLAY_AVAILABLE"
                         :href="PLAY_URL"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center gap-3 rounded-md border border-outline bg-surface px-5 py-3 transition hover:border-secondary"
+                        class="inline-flex items-center gap-3 rounded-md border border-primary bg-primary/10 px-7 py-3 text-primary transition hover:bg-primary hover:text-background hover:shadow-[0_0_28px_-4px_rgba(203,166,247,0.7)]"
                     >
-                        <Play :size="22" class="fill-current" />
+                        <svg
+                            viewBox="0 0 640 640"
+                            class="h-5 w-5 shrink-0 fill-current"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M389.6 298.3L168.9 77L449.7 238.2L389.6 298.3zM111.3 64C98.3 70.8 89.6 83.2 89.6 99.3L89.6 540.6C89.6 556.7 98.3 569.1 111.3 575.9L367.9 319.9L111.3 64zM536.5 289.6L477.6 255.5L411.9 320L477.6 384.5L537.7 350.4C555.7 336.1 555.7 303.9 536.5 289.6zM168.9 563L449.7 401.8L389.6 341.7L168.9 563z"
+                            />
+                        </svg>
                         <span class="text-left leading-tight">
                             <span
-                                class="block text-[0.6rem] uppercase tracking-wider text-on-surface-muted"
+                                class="block text-[0.6rem] uppercase tracking-wider opacity-80"
                                 >Get it on</span
                             >
                             <span class="block font-semibold">Google Play</span>
                         </span>
+                    </a>
+                    <button
+                        v-else
+                        type="button"
+                        :aria-disabled="true"
+                        @click="flashSoon"
+                        class="inline-flex cursor-not-allowed items-center gap-3 rounded-md border border-outline bg-surface-highest px-7 py-3 text-on-surface-muted transition"
+                    >
+                        <svg
+                            viewBox="0 0 640 640"
+                            class="h-5 w-5 shrink-0 fill-current"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M389.6 298.3L168.9 77L449.7 238.2L389.6 298.3zM111.3 64C98.3 70.8 89.6 83.2 89.6 99.3L89.6 540.6C89.6 556.7 98.3 569.1 111.3 575.9L367.9 319.9L111.3 64zM536.5 289.6L477.6 255.5L411.9 320L477.6 384.5L537.7 350.4C555.7 336.1 555.7 303.9 536.5 289.6zM168.9 563L449.7 401.8L389.6 341.7L168.9 563z"
+                            />
+                        </svg>
+                        <span class="text-left leading-tight">
+                            <span
+                                class="block text-[0.6rem] uppercase tracking-wider opacity-80"
+                                >Get it on</span
+                            >
+                            <span class="block font-semibold">{{
+                                showSoon ? "Coming soon" : "Google Play"
+                            }}</span>
+                        </span>
+                    </button>
+
+                    <a
+                        href="https://github.com/hecker-01/Kitsudo/releases/latest"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="rounded-md border border-outline px-7 py-3.5 font-semibold text-on-surface transition hover:border-primary hover:text-primary"
+                    >
+                        [ Download APK ]
                     </a>
 
                     <a
@@ -142,7 +187,7 @@ import { RELEASES_URL, REPO_URL, PLAY_URL } from "../data/site.js";
                         rel="noopener noreferrer"
                         class="rounded-md border border-outline px-7 py-3.5 font-semibold text-on-surface transition hover:border-primary hover:text-primary"
                     >
-                        [ View source ]
+                        [ Build from source ]
                     </a>
                 </div>
 
